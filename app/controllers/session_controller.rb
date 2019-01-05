@@ -8,10 +8,10 @@ class SessionController < ApplicationController
 		user = User.find_by(username:params[:session][:username])
 		if user && user.authenticate(params[:session][:password])
 				session[:user_id] = user.id
-				flash[:success] = "Logged in"
+				flash[:success] = "Successfully Logged In"
 				redirect_to root_path
 		else
-			flash.now[:error] = "Incorrect details"
+			flash.now[:error] = "Login Information Incorrect"
 			render 'new'
 		end
 	end
